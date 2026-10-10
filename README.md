@@ -7,9 +7,10 @@ Complete DevOps learning guide covering Linux, Git/GitHub, Docker, Kubernetes, T
 1. [Learning path](LEARNING-PATH.md) — follow the tool order.
 2. [Interview Q&A](INTERVIEW-QA.md) — practise concise answers and scenarios.
 3. [Interview gap checklist and hands-on labs](INTERVIEW-GAP-CHECKLIST-AND-LABS.md) — track missing topics and practical exercises.
-4. [Real-world DevOps projects](REAL-WORLD-DEVOPS-PROJECTS.md) — connect tools in end-to-end scenarios.
-5. [Top 100 DevOps commands](TOP-100-DEVOPS-COMMANDS.md) — command revision.
-6. [Python for DevOps](PYTHON-FOR-DEVOPS.md) — scripting practice.
+4. [Master coverage audit](MASTER-COVERAGE-AUDIT.md) — one checklist for the four official documentation tracks and wider interview curriculum.
+5. [Real-world DevOps projects](REAL-WORLD-DEVOPS-PROJECTS.md) — connect tools in end-to-end scenarios.
+6. [Top 100 DevOps commands](TOP-100-DEVOPS-COMMANDS.md) — command revision.
+7. [Python for DevOps](PYTHON-FOR-DEVOPS.md) — scripting practice.
 
 ## Four official documentation tracks
 
