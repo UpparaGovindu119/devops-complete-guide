@@ -1,0 +1,16 @@
+# CronJob to scale down aiops-bot nightly (cost saver)
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-cost-saver
+spec:
+  schedule: "0 22 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: saver
+            image: bitnami/kubectl:latest
+            command: ["/bin/sh","-c","kubectl scale deployment aiops-bot --replicas=0"]
+          restartPolicy: OnFailure
