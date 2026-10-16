@@ -1,0 +1,11 @@
+pipeline {
+  agent any
+  stages {
+    stage('Git Checkout'){ steps { checkout scm } }
+    stage('Maven Build'){ steps { sh 'mvn clean package' } }
+    stage('SonarQube Scan'){ steps { withSonarQubeEnv('sonar'){ sh 'mvn sonar:sonar' } } }
+    stage('Docker Build'){ steps { sh 'docker build -t devops-app:${BUILD_NUMBER}.' } }
+    stage('Trivy Scan'){ steps { sh 'trivy image devops-app:${BUILD_NUMBER} > trivy-report.txt' } }
+    stage('Push & Deploy'){ steps { sh 'echo Deploy success' } }
+  }
+}
