@@ -1,0 +1,29 @@
+# Project-3: AIOps-Lite-HERO Kubernetes manifests
+# Deployment and a CronJob to scale down the bot nightly as a cost-saver
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: aiops-bot}
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: aiops-bot}}
+  template:
+    metadata: {labels: {app: aiops-bot}}
+    spec:
+      containers:
+      - name: bot
+        image: aiops-bot:latest
+        ports: [{containerPort: 8000}]
+        livenessProbe: {httpGet: {path: /, port: 8000}, initialDelaySeconds: 30}
+        resources: {limits: {memory: "512Mi"}}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata: {name: cost-saver}
+spec:
+  schedule: "0 22 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers: [{name: saver, image: bitnami/kubectl, command: ["kubectl","scale","deployment","aiops-bot","--replicas=0"]}]
+          restartPolicy: OnFailure
